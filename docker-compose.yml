@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres_primary:
+    image: postgres
+    hostname: postgres_primary
+    environment:
+      - POSTGRES_PASSWORD=5ts3P9khTc2UqJvNh7xzJU4EgvcFRmVV
+      - POSTGRES_USER=bbd_postgres_primary
+      - POSTGRES_DB=bbd
+    ports:
+      - "5432:5432"
+  postgres_admin:
+    image: postgres
+    hostname: postgres_admin
+    environment:
+      - POSTGRES_PASSWORD=KgeTQrm3QPpjvYzHjRf7f3Ssvmv2NAdU
+      - POSTGRES_USER=bbd_postgres_admin
+      - POSTGRES_DB=bbd
+    ports:
+      - "5433:5432"
+
+

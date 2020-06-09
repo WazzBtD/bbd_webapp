@@ -1,0 +1,15 @@
+
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Tematy</h1>
+<ul>
+{% for topic in object_list %}
+    <li><a href="{% url 'forum:topic-detail' topic.id %}">{{ topic.title }}</a></li>
+{% empty %}
+    <li>Brak tematów.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'forum:topic-create' %}" class="btn btn-dark" role="button">Utwórz nowy temat</a>
+{% endblock %}

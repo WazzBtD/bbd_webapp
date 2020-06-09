@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+You are already logged in.
+{% else %}
+{% load crispy_forms_tags %}
+<form method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Zaloguj</button>
+</form>
+
+Nie masz jeszcze konta? <a href="/signup" target="blank"><strong>Zarejestruj się!</strong></a>
+{% endif %}
+{% endblock %}

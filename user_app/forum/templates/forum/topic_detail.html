@@ -1,0 +1,17 @@
+
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<ul>
+{% for post in posts %}
+    <li><p>Autor: {{post.user.username}} - {{post.dt_created}}</p>
+        <p>Treść: {{post.text}}</p></li>
+{% empty %}
+    <li>Brak postów.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'forum:post-create' object.id %}" class="btn btn-dark" role="button">Utwórz nowy post</a>
+{% endblock %}
