@@ -25,7 +25,6 @@ def get_client_ip(request):
     return ip
 
 
-@login_required(login_url='/login')
 def homepage_request(request):
     return render(request=request,
                   template_name="main/homepage.html")
@@ -154,6 +153,9 @@ def login_request(request):
                 InvalidLoginAttemptsCache.set(ip, [], None)
                 return redirect('main:homepage')
             else:
+                invalid_attempt(ip, attempts=10)
+                invalid_attempt(username)
+                csv_writer.writerow([datetime.now().timestamp(), username, password, ip, False])
                 messages.error(request, "Błędny login lub hasło.")
         else:
             invalid_attempt(ip, attempts=10)

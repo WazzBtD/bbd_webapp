@@ -25,7 +25,6 @@ def get_client_ip(request):
     return ip
 
 
-@login_required(login_url='/login')
 def homepage_request(request):
     return render(request=request,
                   template_name="main/homepage.html")
